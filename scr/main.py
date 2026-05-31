@@ -2,23 +2,23 @@ import tkinter as tk
 
 # REPOSITORIOS
 
-from repository.repositorio import Repositorio
+from scr.repository.repositorio import Repositorio
 
 # SERVICIOS
 
-from service.servicio_usuario import ServicioUsuario
-from service.servicio_beneficiario import ServicioBeneficiario
-from service.servicio_recurso import ServicioRecurso
-from service.servicio_entrega import ServicioEntrega
-from service.servicio_reportes import ServicioReporte
+from scr.service.servicio_usuario import ServicioUsuario
+from scr.service.servicio_beneficiario import ServicioBeneficiario
+from scr.service.servicio_recurso import ServicioRecurso
+from scr.service.servicio_entrega import ServicioEntrega
+from scr.service.servicio_reportes import ServicioReporte
 
 # CONTROLADOR
 
-from controller.controlador import Controlador
+from scr.controller.controlador import Controlador
 
 # VISTAS
 
-from view.vista_inicio_sesion import VistaInicioSesion
+from scr.view.vista_inicio_sesion import VistaInicioSesion
 
 #---------------------------------------------------------------------------------------------
 
@@ -98,3 +98,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+#---------------------------------------------------------------------------------------------

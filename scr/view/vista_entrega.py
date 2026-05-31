@@ -5,6 +5,8 @@ from tkinter import ttk, messagebox
 
 class VistaEntrega:
 
+#---------------------------------------------------------------------------------------------
+
     def __init__(self, root, controlador):
 
         # Guarda controlador
@@ -14,10 +16,12 @@ class VistaEntrega:
         self.window = tk.Toplevel(root)
 
         # Configuración ventana
-        self.window.title("Gestión Entregas")
+        self.window.title("Gestión de Entregas Alimentarias")
 
+        # Tamaño ventana
         self.window.geometry("1000x600")
 
+        # Evita redimensionar
         self.window.resizable(False, False)
 
         # Construye interfaz
@@ -28,198 +32,182 @@ class VistaEntrega:
     def _build_ui(self):
 
         # Frame principal
-        frame = ttk.Frame(
-            self.window,
-            padding=20
-        )
+        frame = ttk.Frame(self.window, padding=15)
 
         frame.pack(fill="both", expand=True)
 
-        # Título centrado
+        # Título principal
         ttk.Label(
             frame,
-            text="Gestión Entregas Alimentarias",
-            font=("Arial", 16, "bold")
-        ).grid(
-            row=0,
-            column=0,
-            columnspan=4,
-            pady=20
+            text="Gestión de Entregas Alimentarias",
+            font=("Arial", 15, "bold")
+        ).pack(pady=10)
+
+    #-------------------------------------------------------------------------------------
+        # CAMPOS
+    #-------------------------------------------------------------------------------------
+
+        # Frame para campos del formulario
+        frame_campos = ttk.LabelFrame(
+            frame,
+            text="Datos de la Entrega Alimentaria",
+            padding=15
         )
 
-        # Labels y entries
+        frame_campos.pack(fill="x", pady=10)
 
+        # Etiqueta código entrega
         ttk.Label(
-            frame,
-            text="Código Entrega:"
-        ).grid(
-            row=1,
-            column=0,
-            padx=10,
-            pady=8
-        )
+            frame_campos,
+            text="Código entrega:"
+        ).grid(row=0, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_codigo = ttk.Entry(
-            frame,
-            width=30
-        )
+        # Caja texto código entrega
+        self.entry_codigo = ttk.Entry(frame_campos, width=30)
 
-        self.entry_codigo.grid(
-            row=1,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_codigo.grid(row=0, column=1, padx=10, pady=5)
 
+        # Etiqueta beneficiario
         ttk.Label(
-            frame,
-            text="ID Beneficiario:"
-        ).grid(
-            row=2,
-            column=0,
-            padx=10,
-            pady=8
-        )
+            frame_campos,
+            text="ID beneficiario:"
+        ).grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_beneficiario = ttk.Entry(
-            frame,
-            width=30
-        )
+        # Caja texto beneficiario
+        self.entry_beneficiario = ttk.Entry(frame_campos, width=30)
 
-        self.entry_beneficiario.grid(
-            row=2,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_beneficiario.grid(row=1, column=1, padx=10, pady=5)
 
+        # Etiqueta recurso
         ttk.Label(
-            frame,
-            text="Código Recurso:"
-        ).grid(
-            row=3,
-            column=0,
-            padx=10,
-            pady=8
-        )
+            frame_campos,
+            text="Código recurso:"
+        ).grid(row=2, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_recurso = ttk.Entry(
-            frame,
-            width=30
-        )
+        # Caja texto recurso
+        self.entry_recurso = ttk.Entry(frame_campos, width=30)
 
-        self.entry_recurso.grid(
-            row=3,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_recurso.grid(row=2, column=1, padx=10, pady=5)
 
+        # Etiqueta cantidad
         ttk.Label(
-            frame,
+            frame_campos,
             text="Cantidad:"
-        ).grid(
-            row=4,
-            column=0,
-            padx=10,
-            pady=8
-        )
+        ).grid(row=0, column=2, padx=10, pady=5, sticky="w")
 
-        self.entry_cantidad = ttk.Entry(
-            frame,
-            width=30
-        )
+        # Caja texto cantidad
+        self.entry_cantidad = ttk.Entry(frame_campos, width=30)
 
-        self.entry_cantidad.grid(
-            row=4,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_cantidad.grid(row=0, column=3, padx=10, pady=5)
 
+        # Etiqueta fecha
+        ttk.Label(
+            frame_campos,
+            text="Fecha:"
+        ).grid(row=1, column=2, padx=10, pady=5, sticky="w")
+
+        # Caja texto fecha
+        self.entry_fecha = ttk.Entry(frame_campos, width=30)
+
+        self.entry_fecha.grid(row=1, column=3, padx=10, pady=5)
+
+        # Etiqueta responsable
+        ttk.Label(
+            frame_campos,
+            text="Responsable:"
+        ).grid(row=2, column=2, padx=10, pady=5, sticky="w")
+
+        # Caja texto responsable
+        self.entry_responsable = ttk.Entry(frame_campos, width=30)
+
+        self.entry_responsable.grid(row=2, column=3, padx=10, pady=5)
+
+    #-------------------------------------------------------------------------------------
         # BOTONES
+    #-------------------------------------------------------------------------------------
 
+        # Frame para botones
+        frame_botones = ttk.Frame(frame)
+
+        frame_botones.pack(pady=10)
+
+        # Botón registrar entrega
         ttk.Button(
-            frame,
+            frame_botones,
             text="Registrar",
-            width=20,
             command=self.registrar
-        ).grid(
-            row=5,
-            column=0,
-            pady=15
-        )
+        ).grid(row=0, column=0, padx=5)
 
+        # Botón buscar por beneficiario
         ttk.Button(
-            frame,
-            text="Buscar Beneficiario",
-            width=20,
+            frame_botones,
+            text="Buscar por beneficiario",
             command=self.buscar_beneficiario
-        ).grid(
-            row=5,
-            column=1,
-            pady=15
-        )
+        ).grid(row=0, column=1, padx=5)
 
+        # Botón buscar por fecha
         ttk.Button(
-            frame,
-            text="Buscar Fecha",
-            width=20,
+            frame_botones,
+            text="Buscar por fecha",
             command=self.buscar_fecha
-        ).grid(
-            row=5,
-            column=2,
-            pady=15
-        )
+        ).grid(row=0, column=2, padx=5)
 
+        # Botón consultar todos
         ttk.Button(
-            frame,
-            text="Consultar Todos",
-            width=20,
+            frame_botones,
+            text="Consultar todos",
             command=self.consultar_todos
-        ).grid(
-            row=5,
-            column=3,
-            pady=15
-        )
+        ).grid(row=0, column=3, padx=5)
 
+        # Botón limpiar campos
+        ttk.Button(
+            frame_botones,
+            text="Limpiar",
+            command=self.limpiar_campos
+        ).grid(row=0, column=4, padx=5)
+
+    #-------------------------------------------------------------------------------------
         # TABLA
+    #-------------------------------------------------------------------------------------
 
+        # Columnas tabla
         columnas = (
             "codigo",
             "beneficiario",
             "recurso",
-            "cantidad"
+            "cantidad",
+            "fecha",
+            "responsable",
+            "valor"
         )
 
+        # Treeview resultados
         self.tree = ttk.Treeview(
             frame,
             columns=columnas,
             show="headings",
-            height=12
+            height=14
         )
 
-        self.tree.grid(
-            row=6,
-            column=0,
-            columnspan=4,
-            padx=10,
-            pady=20
-        )
+        self.tree.pack(fill="x", pady=15)
 
         # Encabezados tabla
+        self.tree.heading("codigo", text="Código", anchor="center")
+        self.tree.heading("beneficiario", text="Beneficiario", anchor="center")
+        self.tree.heading("recurso", text="Recurso", anchor="center")
+        self.tree.heading("cantidad", text="Cantidad", anchor="center")
+        self.tree.heading("fecha", text="Fecha", anchor="center")
+        self.tree.heading("responsable", text="Responsable", anchor="center")
+        self.tree.heading("valor", text="Valor", anchor="center")
 
-        self.tree.heading("codigo", text="Código")
-        self.tree.heading("beneficiario", text="Beneficiario")
-        self.tree.heading("recurso", text="Recurso")
-        self.tree.heading("cantidad", text="Cantidad")
-
-        # Tamaños columnas
-
-        self.tree.column("codigo", width=150)
-        self.tree.column("beneficiario", width=250)
-        self.tree.column("recurso", width=250)
-        self.tree.column("cantidad", width=120)
+        # Tamaño columnas
+        self.tree.column("codigo", width=100, anchor="center")
+        self.tree.column("beneficiario", width=130, anchor="center")
+        self.tree.column("recurso", width=110, anchor="center")
+        self.tree.column("cantidad", width=90, anchor="center")
+        self.tree.column("fecha", width=110, anchor="center")
+        self.tree.column("responsable", width=170, anchor="center")
+        self.tree.column("valor", width=100, anchor="center")
 
 #---------------------------------------------------------------------------------------------
 
@@ -227,8 +215,19 @@ class VistaEntrega:
 
         # Elimina filas tabla
         for item in self.tree.get_children():
-
             self.tree.delete(item)
+
+#---------------------------------------------------------------------------------------------
+
+    def limpiar_campos(self):
+
+        # Limpia las cajas de texto
+        self.entry_codigo.delete(0, tk.END)
+        self.entry_beneficiario.delete(0, tk.END)
+        self.entry_recurso.delete(0, tk.END)
+        self.entry_cantidad.delete(0, tk.END)
+        self.entry_fecha.delete(0, tk.END)
+        self.entry_responsable.delete(0, tk.END)
 
 #---------------------------------------------------------------------------------------------
 
@@ -242,21 +241,22 @@ class VistaEntrega:
                 self.entry_beneficiario.get(),
                 self.entry_recurso.get(),
                 self.entry_cantidad.get(),
-                "2026-05-30",
-                "Administrador"
+                self.entry_fecha.get(),
+                self.entry_responsable.get()
             )
 
             # Mensaje éxito
             messagebox.showinfo(
                 "Éxito",
-                "Entrega registrada correctamente"
+                "Entrega registrada correctamente!"
             )
 
-            # Actualiza tabla
-            self.consultar_todos()
+            # Limpia campos
+            self.limpiar_campos()
 
-        except Exception as e:
+        except ValueError as e:
 
+            # Muestra error validación
             messagebox.showerror(
                 "Error",
                 str(e)
@@ -282,7 +282,10 @@ class VistaEntrega:
                     entrega.codigo_entrega,
                     entrega.identificacion_beneficiario,
                     entrega.codigo_recurso,
-                    entrega.cantidad_entregada
+                    entrega.cantidad_entregada,
+                    entrega.fecha,
+                    entrega.responsable_entrega,
+                    entrega.valor_economico
                 )
             )
 
@@ -298,6 +301,17 @@ class VistaEntrega:
             self.entry_beneficiario.get()
         )
 
+        # Verifica si hay resultados
+        if len(lista) == 0:
+
+            # Muestra mensaje si no hay resultados
+            messagebox.showinfo(
+                "Resultado",
+                "No se encontraron entregas para ese beneficiario..."
+            )
+
+            return
+
         # Inserta resultados
         for entrega in lista:
 
@@ -308,7 +322,10 @@ class VistaEntrega:
                     entrega.codigo_entrega,
                     entrega.identificacion_beneficiario,
                     entrega.codigo_recurso,
-                    entrega.cantidad_entregada
+                    entrega.cantidad_entregada,
+                    entrega.fecha,
+                    entrega.responsable_entrega,
+                    entrega.valor_economico
                 )
             )
 
@@ -321,8 +338,19 @@ class VistaEntrega:
 
         # Busca entregas fecha
         lista = self.controlador.listar_entregas_por_fecha(
-            "2026-05-30"
+            self.entry_fecha.get()
         )
+
+        # Verifica si hay resultados
+        if len(lista) == 0:
+
+            # Muestra mensaje si no hay resultados
+            messagebox.showinfo(
+                "Resultado",
+                "No se encontraron entregas en esa fecha..."
+            )
+
+            return
 
         # Inserta resultados
         for entrega in lista:
@@ -334,6 +362,11 @@ class VistaEntrega:
                     entrega.codigo_entrega,
                     entrega.identificacion_beneficiario,
                     entrega.codigo_recurso,
-                    entrega.cantidad_entregada
+                    entrega.cantidad_entregada,
+                    entrega.fecha,
+                    entrega.responsable_entrega,
+                    entrega.valor_economico
                 )
             )
+
+#---------------------------------------------------------------------------------------------

@@ -2,11 +2,13 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 # Importa vista principal
-from view.vista_principal import VistaPrincipal
+from scr.view.vista_principal import VistaPrincipal
 
 #---------------------------------------------------------------------------------------------
 
 class VistaInicioSesion:
+
+#---------------------------------------------------------------------------------------------
 
     def __init__(self, root, controlador):
 
@@ -23,7 +25,7 @@ class VistaInicioSesion:
         self.window.title("Inicio de Sesión")
 
         # Tamaño ventana
-        self.window.geometry("450x300")
+        self.window.geometry("480x320")
 
         # Evita redimensionar
         self.window.resizable(False, False)
@@ -36,7 +38,7 @@ class VistaInicioSesion:
     def _build_ui(self):
 
         # Frame principal
-        frame = ttk.Frame(self.window, padding=30)
+        frame = ttk.Frame(self.window, padding=25)
 
         frame.pack(fill="both", expand=True)
 
@@ -45,47 +47,69 @@ class VistaInicioSesion:
             frame,
             text="Sistema Manos Solidarias",
             font=("Arial", 16, "bold")
-        ).grid(row=0, column=0, columnspan=2, pady=20)
+        ).pack(pady=10)
+
+        # Frame para datos de inicio de sesión
+        frame_login = ttk.LabelFrame(
+            frame,
+            text="Datos de Acceso",
+            padding=20
+        )
+
+        frame_login.pack(fill="x", pady=15)
 
         # Label usuario
         ttk.Label(
-            frame,
+            frame_login,
             text="Usuario:"
-        ).grid(row=1, column=0, padx=10, pady=10)
+        ).grid(row=0, column=0, padx=10, pady=8, sticky="w")
 
         # Entry usuario
-        self.entry_usuario = ttk.Entry(frame, width=30)
+        self.entry_usuario = ttk.Entry(frame_login, width=32)
 
-        self.entry_usuario.grid(row=1, column=1)
+        self.entry_usuario.grid(row=0, column=1, padx=10, pady=8)
 
         # Label contraseña
         ttk.Label(
-            frame,
+            frame_login,
             text="Contraseña:"
-        ).grid(row=2, column=0, padx=10, pady=10)
+        ).grid(row=1, column=0, padx=10, pady=8, sticky="w")
 
         # Entry contraseña
         self.entry_contrasena = ttk.Entry(
-            frame,
-            width=30,
+            frame_login,
+            width=32,
             show="*"
         )
 
-        self.entry_contrasena.grid(row=2, column=1)
+        self.entry_contrasena.grid(row=1, column=1, padx=10, pady=8)
+
+        # Frame para botones
+        frame_botones = ttk.Frame(frame)
+
+        frame_botones.pack(pady=10)
 
         # Botón iniciar sesión
         ttk.Button(
-            frame,
-            text="Iniciar Sesión",
+            frame_botones,
+            text="Iniciar sesión",
             command=self.iniciar_sesion
-        ).grid(row=3, column=0, pady=20)
+        ).grid(row=0, column=0, padx=8)
 
         # Botón registrar usuario
         ttk.Button(
-            frame,
-            text="Registrar Usuario",
+            frame_botones,
+            text="Registrar usuario",
             command=self.registrar_usuario
-        ).grid(row=3, column=1)
+        ).grid(row=0, column=1, padx=8)
+
+#---------------------------------------------------------------------------------------------
+
+    def limpiar_campos(self):
+
+        # Limpia las cajas de texto
+        self.entry_usuario.delete(0, tk.END)
+        self.entry_contrasena.delete(0, tk.END)
 
 #---------------------------------------------------------------------------------------------
 
@@ -109,7 +133,7 @@ class VistaInicioSesion:
 
                 messagebox.showinfo(
                     "Éxito",
-                    "Inicio de sesión exitoso"
+                    "Inicio de sesión exitoso!"
                 )
 
                 # Cierra login
@@ -121,7 +145,7 @@ class VistaInicioSesion:
                     self.controlador
                 )
 
-        except Exception as e:
+        except ValueError as e:
 
             messagebox.showerror(
                 "Error",
@@ -147,12 +171,17 @@ class VistaInicioSesion:
 
             messagebox.showinfo(
                 "Éxito",
-                "Usuario registrado correctamente"
+                "Usuario registrado correctamente!"
             )
 
-        except Exception as e:
+            # Limpia campos
+            self.limpiar_campos()
+
+        except ValueError as e:
 
             messagebox.showerror(
                 "Error",
                 str(e)
             )
+
+#---------------------------------------------------------------------------------------------

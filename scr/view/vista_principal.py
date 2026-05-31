@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 
-from view.vista_beneficiario import VistaBeneficiario
-from view.vista_recurso import VistaRecurso
-from view.vista_entrega import VistaEntrega
-from view.vista_reportes import VistaReportes
+from scr.view.vista_beneficiario import VistaBeneficiario
+from scr.view.vista_recurso import VistaRecurso
+from scr.view.vista_entrega import VistaEntrega
+from scr.view.vista_reportes import VistaReportes
 
 #---------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ class VistaPrincipal:
         self.window.title("Sistema Manos Solidarias")
 
         # Tamaño ventana
-        self.window.geometry("500x400")
+        self.window.geometry("550x400")
 
         # Evita redimensionar
         self.window.resizable(False, False)
@@ -42,14 +42,14 @@ class VistaPrincipal:
         # Título principal
         ttk.Label(
             frame,
-            text="Sistema Manos Solidarias",
+            text="Manos Solidarias",
             font=("Arial", 16, "bold")
         ).pack(pady=20)
 
         # Botón abrir beneficiarios
         ttk.Button(
             frame,
-            text="Gestión Beneficiarios",
+            text="Gestión beneficiarios",
             width=30,
             command=self.abrir_beneficiarios
         ).pack(pady=10)
@@ -57,7 +57,7 @@ class VistaPrincipal:
         # Botón abrir recursos
         ttk.Button(
             frame,
-            text="Gestión Recursos",
+            text="Gestión recursos",
             width=30,
             command=self.abrir_recursos
         ).pack(pady=10)
@@ -65,7 +65,7 @@ class VistaPrincipal:
         # Botón abrir entregas
         ttk.Button(
             frame,
-            text="Gestión Entregas",
+            text="Gestión entregas",
             width=30,
             command=self.abrir_entregas
         ).pack(pady=10)
@@ -125,3 +125,5 @@ class VistaPrincipal:
             self.window,
             self.controlador
         )
+
+#---------------------------------------------------------------------------------------------

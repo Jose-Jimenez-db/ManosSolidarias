@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "codigo_recurso": "R001",
+        "nombre": "Arroz",
+        "categoria": "Granos",
+        "cantidad_disponible": 30,
+        "costo_unitario": 1200.0
+    },
+    {
+        "codigo_recurso": "R002",
+        "nombre": "Frijoles",
+        "categoria": "Granos",
+        "cantidad_disponible": 35,
+        "costo_unitario": 1500.0
+    },
+    {
+        "codigo_recurso": "R003",
+        "nombre": "Leche",
+        "categoria": "L\u00e1cteos",
+        "cantidad_disponible": 5,
+        "costo_unitario": 950.0
+    }
+]

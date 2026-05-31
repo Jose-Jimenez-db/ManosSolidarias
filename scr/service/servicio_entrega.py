@@ -8,12 +8,12 @@ class ServicioEntrega:
 
 #---------------------------------------------------------------------------------------------
 
-    def __init__(self, repositorio_beneficiarios, repositorio_recursos,
-                 repositorio_entregas):
+    def __init__(self, repositorio_entregas, repositorio_beneficiarios,
+                 repositorio_recursos):
         """Inicializa el servicio con los repositorios necesarios para entregas."""
+        self.repositorio_entregas = repositorio_entregas
         self.repositorio_beneficiarios = repositorio_beneficiarios
         self.repositorio_recursos = repositorio_recursos
-        self.repositorio_entregas = repositorio_entregas
 
 #---------------------------------------------------------------------------------------------
 

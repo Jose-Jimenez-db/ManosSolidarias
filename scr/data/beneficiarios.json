@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "identificacion": "B001",
+        "nombre_completo": "Mar\u00eda Lop\u00e9z",
+        "comunidad": "Barranca",
+        "integrantes_hogar": 4,
+        "prioridad_social": "Alta"
+    },
+    {
+        "identificacion": "B002",
+        "nombre_completo": "Carlos Rodr\u00edguez",
+        "comunidad": "El Roble",
+        "integrantes_hogar": 3,
+        "prioridad_social": "Media"
+    },
+    {
+        "identificacion": "B003",
+        "nombre_completo": "Ana Morales",
+        "comunidad": "Barranca",
+        "integrantes_hogar": 5,
+        "prioridad_social": "Baja"
+    }
+]

@@ -5,6 +5,8 @@ from tkinter import ttk, messagebox
 
 class VistaRecurso:
 
+#---------------------------------------------------------------------------------------------
+
     def __init__(self, root, controlador):
 
         # Guarda controlador
@@ -14,10 +16,12 @@ class VistaRecurso:
         self.window = tk.Toplevel(root)
 
         # Configuración ventana
-        self.window.title("Gestión Recursos Alimenticios")
+        self.window.title("Gestión de Recursos Alimenticios")
 
-        self.window.geometry("1050x620")
+        # Tamaño ventana
+        self.window.geometry("1000x600")
 
+        # Evita redimensionar
         self.window.resizable(False, False)
 
         # Construye interfaz
@@ -28,204 +32,141 @@ class VistaRecurso:
     def _build_ui(self):
 
         # Frame principal
-        frame = ttk.Frame(
-            self.window,
-            padding=20
-        )
+        frame = ttk.Frame(self.window, padding=15)
 
         frame.pack(fill="both", expand=True)
 
-        #-------------------------------------------------------------------------------------
-        # TÍTULO
-        #-------------------------------------------------------------------------------------
-
+        # Título principal
         ttk.Label(
             frame,
-            text="Gestión Recursos Alimenticios",
-            font=("Arial", 16, "bold")
-        ).grid(
-            row=0,
-            column=0,
-            columnspan=4,
-            pady=20
+            text="Gestión de Recursos Alimenticios",
+            font=("Arial", 15, "bold")
+        ).pack(pady=10)
+
+    #-------------------------------------------------------------------------------------
+        # CAMPOS
+    #-------------------------------------------------------------------------------------
+
+        # Frame para campos del formulario
+        frame_campos = ttk.LabelFrame(
+            frame,
+            text="Datos del Recurso Alimenticio",
+            padding=15
         )
 
-        #-------------------------------------------------------------------------------------
-        # LABELS Y ENTRIES
-        #-------------------------------------------------------------------------------------
+        frame_campos.pack(fill="x", pady=10)
 
-        # Código recurso
+        # Etiqueta código recurso
         ttk.Label(
-            frame,
+            frame_campos,
             text="Código recurso:"
-        ).grid(
-            row=1,
-            column=0,
-            padx=10,
-            pady=8,
-            sticky="w"
-        )
+        ).grid(row=0, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_codigo = ttk.Entry(
-            frame,
-            width=32
-        )
+        # Caja texto código recurso
+        self.entry_codigo = ttk.Entry(frame_campos, width=30)
 
-        self.entry_codigo.grid(
-            row=1,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_codigo.grid(row=0, column=1, padx=10, pady=5)
 
-        # Nombre recurso
+        # Etiqueta nombre
         ttk.Label(
-            frame,
+            frame_campos,
             text="Nombre:"
-        ).grid(
-            row=2,
-            column=0,
-            padx=10,
-            pady=8,
-            sticky="w"
-        )
+        ).grid(row=1, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_nombre = ttk.Entry(
-            frame,
-            width=32
-        )
+        # Caja texto nombre
+        self.entry_nombre = ttk.Entry(frame_campos, width=30)
 
-        self.entry_nombre.grid(
-            row=2,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_nombre.grid(row=1, column=1, padx=10, pady=5)
 
-        # Categoría
+        # Etiqueta categoría
         ttk.Label(
-            frame,
+            frame_campos,
             text="Categoría:"
-        ).grid(
-            row=3,
-            column=0,
-            padx=10,
-            pady=8,
-            sticky="w"
-        )
+        ).grid(row=2, column=0, padx=10, pady=5, sticky="w")
 
-        self.entry_categoria = ttk.Entry(
-            frame,
-            width=32
-        )
+        # Caja texto categoría
+        self.entry_categoria = ttk.Entry(frame_campos, width=30)
 
-        self.entry_categoria.grid(
-            row=3,
-            column=1,
-            padx=10,
-            pady=8
-        )
+        self.entry_categoria.grid(row=2, column=1, padx=10, pady=5)
 
-        # Cantidad
+        # Etiqueta cantidad disponible
         ttk.Label(
-            frame,
+            frame_campos,
             text="Cantidad disponible:"
-        ).grid(
-            row=1,
-            column=2,
-            padx=10,
-            pady=8,
-            sticky="w"
-        )
+        ).grid(row=0, column=2, padx=10, pady=5, sticky="w")
 
-        self.entry_cantidad = ttk.Entry(
-            frame,
-            width=32
-        )
+        # Caja texto cantidad disponible
+        self.entry_cantidad = ttk.Entry(frame_campos, width=30)
 
-        self.entry_cantidad.grid(
-            row=1,
-            column=3,
-            padx=10,
-            pady=8
-        )
+        self.entry_cantidad.grid(row=0, column=3, padx=10, pady=5)
 
-        # Costo
+        # Etiqueta costo unitario
         ttk.Label(
-            frame,
+            frame_campos,
             text="Costo unitario:"
-        ).grid(
-            row=2,
-            column=2,
-            padx=10,
-            pady=8,
-            sticky="w"
-        )
+        ).grid(row=1, column=2, padx=10, pady=5, sticky="w")
 
-        self.entry_costo = ttk.Entry(
-            frame,
-            width=32
-        )
+        # Caja texto costo unitario
+        self.entry_costo = ttk.Entry(frame_campos, width=30)
 
-        self.entry_costo.grid(
-            row=2,
-            column=3,
-            padx=10,
-            pady=8
-        )
+        self.entry_costo.grid(row=1, column=3, padx=10, pady=5)
 
-        #-------------------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------
         # BOTONES
-        #-------------------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------
 
+        # Frame para botones
+        frame_botones = ttk.Frame(frame)
+
+        frame_botones.pack(pady=10)
+
+        # Botón registrar recurso
         ttk.Button(
-            frame,
+            frame_botones,
             text="Registrar",
-            width=20,
             command=self.registrar
-        ).grid(
-            row=4,
-            column=0,
-            pady=20
-        )
+        ).grid(row=0, column=0, padx=5)
 
+        # Botón buscar por código
         ttk.Button(
-            frame,
-            text="Buscar Código",
-            width=20,
+            frame_botones,
+            text="Buscar por código",
             command=self.buscar_codigo
-        ).grid(
-            row=4,
-            column=1,
-            pady=20
-        )
+        ).grid(row=0, column=1, padx=5)
 
+        # Botón buscar por categoría
         ttk.Button(
-            frame,
-            text="Buscar Categoría",
-            width=20,
+            frame_botones,
+            text="Buscar por categoría",
             command=self.buscar_categoria
-        ).grid(
-            row=4,
-            column=2,
-            pady=20
-        )
+        ).grid(row=0, column=2, padx=5)
 
+        # Botón consultar todos
         ttk.Button(
-            frame,
-            text="Consultar Todos",
-            width=20,
+            frame_botones,
+            text="Consultar todos",
             command=self.consultar_todos
-        ).grid(
-            row=4,
-            column=3,
-            pady=20
-        )
+        ).grid(row=0, column=3, padx=5)
 
-        #-------------------------------------------------------------------------------------
+        # Botón eliminar recurso
+        ttk.Button(
+            frame_botones,
+            text="Eliminar",
+            command=self.eliminar
+        ).grid(row=0, column=4, padx=5)
+
+        # Botón limpiar campos
+        ttk.Button(
+            frame_botones,
+            text="Limpiar",
+            command=self.limpiar_campos
+        ).grid(row=0, column=5, padx=5)
+
+    #-------------------------------------------------------------------------------------
         # TABLA
-        #-------------------------------------------------------------------------------------
+    #-------------------------------------------------------------------------------------
 
+        # Columnas tabla
         columnas = (
             "codigo",
             "nombre",
@@ -234,6 +175,7 @@ class VistaRecurso:
             "costo"
         )
 
+        # Treeview resultados
         self.tree = ttk.Treeview(
             frame,
             columns=columnas,
@@ -241,27 +183,21 @@ class VistaRecurso:
             height=14
         )
 
-        self.tree.grid(
-            row=5,
-            column=0,
-            columnspan=4,
-            padx=10,
-            pady=20
-        )
+        self.tree.pack(fill="x", pady=15)
 
-        # Encabezados
-        self.tree.heading("codigo", text="Código")
-        self.tree.heading("nombre", text="Nombre")
-        self.tree.heading("categoria", text="Categoría")
-        self.tree.heading("cantidad", text="Cantidad")
-        self.tree.heading("costo", text="Costo")
+        # Encabezados tabla
+        self.tree.heading("codigo", text="Código", anchor="center")
+        self.tree.heading("nombre", text="Nombre", anchor="center")
+        self.tree.heading("categoria", text="Categoría", anchor="center")
+        self.tree.heading("cantidad", text="Cantidad", anchor="center")
+        self.tree.heading("costo", text="Costo", anchor="center")
 
-        # Tamaños columnas
-        self.tree.column("codigo", width=140)
-        self.tree.column("nombre", width=250)
-        self.tree.column("categoria", width=220)
-        self.tree.column("cantidad", width=150)
-        self.tree.column("costo", width=150)
+        # Tamaño columnas
+        self.tree.column("codigo", width=130, anchor="center")
+        self.tree.column("nombre", width=240, anchor="center")
+        self.tree.column("categoria", width=180, anchor="center")
+        self.tree.column("cantidad", width=120, anchor="center")
+        self.tree.column("costo", width=120, anchor="center")
 
 #---------------------------------------------------------------------------------------------
 
@@ -269,8 +205,18 @@ class VistaRecurso:
 
         # Elimina filas tabla
         for item in self.tree.get_children():
-
             self.tree.delete(item)
+
+#---------------------------------------------------------------------------------------------
+
+    def limpiar_campos(self):
+
+        # Limpia las cajas de texto
+        self.entry_codigo.delete(0, tk.END)
+        self.entry_nombre.delete(0, tk.END)
+        self.entry_categoria.delete(0, tk.END)
+        self.entry_cantidad.delete(0, tk.END)
+        self.entry_costo.delete(0, tk.END)
 
 #---------------------------------------------------------------------------------------------
 
@@ -290,14 +236,15 @@ class VistaRecurso:
             # Mensaje éxito
             messagebox.showinfo(
                 "Éxito",
-                "Recurso registrado correctamente"
+                "Recurso registrado correctamente!"
             )
 
-            # Actualiza tabla
-            self.consultar_todos()
+            # Limpia campos
+            self.limpiar_campos()
 
-        except Exception as e:
+        except ValueError as e:
 
+            # Muestra error validación
             messagebox.showerror(
                 "Error",
                 str(e)
@@ -355,6 +302,14 @@ class VistaRecurso:
                 )
             )
 
+        else:
+
+            # Muestra mensaje si no existe
+            messagebox.showinfo(
+                "Resultado",
+                "No se encontró un recurso con ese código..."
+            )
+
 #---------------------------------------------------------------------------------------------
 
     def buscar_categoria(self):
@@ -366,6 +321,17 @@ class VistaRecurso:
         lista = self.controlador.listar_recursos_por_categoria(
             self.entry_categoria.get()
         )
+
+        # Verifica si hay resultados
+        if len(lista) == 0:
+
+            # Muestra mensaje si no hay resultados
+            messagebox.showinfo(
+                "Resultado",
+                "No se encontraron recursos en esa categoría..."
+            )
+
+            return
 
         # Inserta resultados
         for recurso in lista:
@@ -381,3 +347,46 @@ class VistaRecurso:
                     recurso.costo_unitario
                 )
             )
+
+#---------------------------------------------------------------------------------------------
+
+    def eliminar(self):
+
+        try:
+
+            # Pregunta confirmación antes de eliminar
+            confirmacion = messagebox.askyesno(
+                "Confirmar eliminación",
+                "¿Está seguro de que desea eliminar este recurso?"
+            )
+
+            # Si el usuario no confirma, se cancela el proceso
+            if not confirmacion:
+                return
+
+            # Elimina recurso por código
+            self.controlador.eliminar_recurso(
+                self.entry_codigo.get()
+            )
+
+            # Mensaje éxito
+            messagebox.showinfo(
+                "Éxito",
+                "Recurso eliminado correctamente!"
+            )
+
+            # Limpia campos
+            self.limpiar_campos()
+
+            # Actualiza tabla
+            self.consultar_todos()
+
+        except ValueError as e:
+
+            # Muestra error validación
+            messagebox.showerror(
+                "Error",
+                str(e)
+            )
+
+#---------------------------------------------------------------------------------------------

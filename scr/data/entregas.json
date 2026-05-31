@@ -1,1 +1,29 @@
-[]
+[
+    {
+        "codigo_entrega": "E001",
+        "identificacion_beneficiario": "B001",
+        "codigo_recurso": "R001",
+        "cantidad_entregada": 10,
+        "fecha": "2026-05-31",
+        "responsable_entrega": "Jos\u00e9",
+        "valor_economico": 12000.0
+    },
+    {
+        "codigo_entrega": "E002",
+        "identificacion_beneficiario": "B002",
+        "codigo_recurso": "R002",
+        "cantidad_entregada": 5,
+        "fecha": "2026-05-31",
+        "responsable_entrega": "Mariana",
+        "valor_economico": 7500.0
+    },
+    {
+        "codigo_entrega": "E003",
+        "identificacion_beneficiario": "B003",
+        "codigo_recurso": "R003",
+        "cantidad_entregada": 3,
+        "fecha": "2026-05-31",
+        "responsable_entrega": "Donald",
+        "valor_economico": 2850.0
+    }
+]
