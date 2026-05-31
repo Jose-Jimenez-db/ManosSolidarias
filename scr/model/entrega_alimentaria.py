@@ -1,7 +1,12 @@
 class EntregaAlimentaria:
+    """Representa una entrega alimentaria del sistema."""
+
+#---------------------------------------------------------------------------------------------
+
     def __init__(self, codigo_entrega: str, identificacion_beneficiario: str,
                  codigo_recurso: str, cantidad_entregada: int,
                  fecha: str, responsable_entrega: str, valor_economico: float):
+        """Inicializa una entrega alimentaria."""
         self.codigo_entrega = codigo_entrega
         self.identificacion_beneficiario = identificacion_beneficiario
         self.codigo_recurso = codigo_recurso
@@ -10,7 +15,10 @@ class EntregaAlimentaria:
         self.responsable_entrega = responsable_entrega
         self.valor_economico = valor_economico
 
+#---------------------------------------------------------------------------------------------
+
     def to_dict(self) -> dict:
+        """Convierte la entrega a diccionario."""
         return {
             "codigo_entrega": self.codigo_entrega,
             "identificacion_beneficiario": self.identificacion_beneficiario,
@@ -21,8 +29,11 @@ class EntregaAlimentaria:
             "valor_economico": self.valor_economico
         }
 
+#---------------------------------------------------------------------------------------------
+
     @classmethod
     def from_dict(cls, datos: dict) -> 'EntregaAlimentaria':
+        """Crea una entrega desde un diccionario."""
         return cls(
             datos["codigo_entrega"],
             datos["identificacion_beneficiario"],
@@ -33,7 +44,10 @@ class EntregaAlimentaria:
             datos["valor_economico"]
         )
 
+#---------------------------------------------------------------------------------------------
+
     def __str__(self) -> str:
+        """Devuelve una representación en texto de la entrega."""
         return (f"Entrega: {self.codigo_entrega} | "
                 f"Beneficiario: {self.identificacion_beneficiario} | "
                 f"Recurso: {self.codigo_recurso} | "
@@ -41,3 +55,5 @@ class EntregaAlimentaria:
                 f"Fecha: {self.fecha} | "
                 f"Responsable: {self.responsable_entrega} | "
                 f"Valor: {self.valor_economico}")
+
+#---------------------------------------------------------------------------------------------

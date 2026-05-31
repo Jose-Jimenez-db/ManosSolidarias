@@ -1,13 +1,21 @@
 class RecursoAlimenticio:
+    """Representa un recurso alimenticio del sistema."""
+
+#---------------------------------------------------------------------------------------------
+
     def __init__(self, codigo_recurso: str, nombre: str, categoria: str,
                  cantidad_disponible: int, costo_unitario: float):
+        """Inicializa un recurso alimenticio."""
         self.codigo_recurso = codigo_recurso
         self.nombre = nombre
         self.categoria = categoria
         self.cantidad_disponible = cantidad_disponible
         self.costo_unitario = costo_unitario
 
+#---------------------------------------------------------------------------------------------
+
     def to_dict(self) -> dict:
+        """Convierte el recurso a diccionario."""
         return {
             "codigo_recurso": self.codigo_recurso,
             "nombre": self.nombre,
@@ -16,8 +24,11 @@ class RecursoAlimenticio:
             "costo_unitario": self.costo_unitario
         }
 
+#---------------------------------------------------------------------------------------------
+
     @classmethod
     def from_dict(cls, datos: dict) -> 'RecursoAlimenticio':
+        """Crea un recurso desde un diccionario."""
         return cls(
             datos["codigo_recurso"],
             datos["nombre"],
@@ -26,9 +37,14 @@ class RecursoAlimenticio:
             datos["costo_unitario"]
         )
 
+#---------------------------------------------------------------------------------------------
+
     def __str__(self) -> str:
+        """Devuelve una representación en texto del recurso."""
         return (f"Recurso: {self.nombre} | "
                 f"Código: {self.codigo_recurso} | "
                 f"Categoría: {self.categoria} | "
                 f"Disponible: {self.cantidad_disponible} | "
                 f"Costo: {self.costo_unitario}")
+
+#---------------------------------------------------------------------------------------------
