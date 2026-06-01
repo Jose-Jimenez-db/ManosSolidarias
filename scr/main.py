@@ -1,11 +1,9 @@
 import tkinter as tk
 
 # REPOSITORIOS
-
 from scr.repository.repositorio import Repositorio
 
 # SERVICIOS
-
 from scr.service.servicio_usuario import ServicioUsuario
 from scr.service.servicio_beneficiario import ServicioBeneficiario
 from scr.service.servicio_recurso import ServicioRecurso
@@ -13,11 +11,9 @@ from scr.service.servicio_entrega import ServicioEntrega
 from scr.service.servicio_reportes import ServicioReporte
 
 # CONTROLADOR
-
 from scr.controller.controlador import Controlador
 
 # VISTAS
-
 from scr.view.vista_inicio_sesion import VistaInicioSesion
 
 #---------------------------------------------------------------------------------------------
@@ -31,7 +27,6 @@ def main():
     root.withdraw()
 
     # REPOSITORIOS
-
     repo_usuarios = Repositorio(
         "data/usuarios.json"
     )
@@ -49,11 +44,9 @@ def main():
     )
 
     # SERVICIOS
-
     servicio_usuario = ServicioUsuario(
         repo_usuarios
     )
-
     servicio_beneficiario = ServicioBeneficiario(
         repo_beneficiarios
     )
@@ -75,7 +68,6 @@ def main():
     )
 
     # CONTROLADOR
-
     controlador = Controlador(
         servicio_usuario,
         servicio_beneficiario,
@@ -85,7 +77,6 @@ def main():
     )
 
     # VISTA LOGIN
-
     VistaInicioSesion(
         root,
         controlador

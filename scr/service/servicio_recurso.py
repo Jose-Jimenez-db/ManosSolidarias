@@ -88,6 +88,18 @@ class ServicioRecurso:
 
     def eliminar_recurso(self, codigo_recurso: str):
         """Elimina un recurso alimenticio por código."""
+
+        if not codigo_recurso.strip():
+            raise ValueError("El código del recurso no puede estar vacío...")
+
+        datos_recurso = self.repositorio_recursos.buscar_por_campo(
+            "codigo_recurso",
+            codigo_recurso
+        )
+
+        if datos_recurso is None:
+            raise ValueError("No existe un recurso registrado con ese código...")
+
         return self.repositorio_recursos.eliminar_por_campo(
             "codigo_recurso",
             codigo_recurso

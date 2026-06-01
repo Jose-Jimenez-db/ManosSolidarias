@@ -83,6 +83,18 @@ class ServicioBeneficiario:
 
     def eliminar_beneficiario(self, identificacion: str):
         """Elimina un beneficiario por identificación."""
+
+        if not identificacion.strip():
+            raise ValueError("La identificación no puede estar vacía...")
+
+        datos_beneficiario = self.repositorio_beneficiarios.buscar_por_campo(
+            "identificacion",
+            identificacion
+        )
+
+        if datos_beneficiario is None:
+            raise ValueError("No existe un beneficiario con esa identificación...")
+
         return self.repositorio_beneficiarios.eliminar_por_campo(
             "identificacion",
             identificacion
